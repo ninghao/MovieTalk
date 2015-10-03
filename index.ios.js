@@ -6,6 +6,7 @@
 import React from 'react-native';
 import styles from './app/Styles/Main';
 import MovieList from './app/Components/MovieList';
+import USBox from './app/Components/USBox';
 
 let {
   AppRegistry,
@@ -25,7 +26,7 @@ class MovieTalk extends React.Component {
 
   render() {
     return (
-      <MovieList />
+      <USBox />
     );
   }
 }
