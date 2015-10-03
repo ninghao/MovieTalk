@@ -7,6 +7,7 @@ import React from 'react-native';
 import styles from './app/Styles/Main';
 import MovieList from './app/Components/MovieList';
 import USBox from './app/Components/USBox';
+import icons from './app/Assets/Icons';
 
 let {
   AppRegistry,
@@ -30,9 +31,12 @@ class MovieTalk extends React.Component {
 
   render() {
     return (
-      <TabBarIOS>
+      <TabBarIOS barTintColor="darkslateblue" tintColor="white">
         <TabBarIOS.Item
-          systemIcon="featured"
+          // systemIcon="featured"
+          icon={{uri: icons.star, scale: 4.6}}
+          title="推荐电影"
+          selectedIcon={{uri: icons.starActive, scale: 4.6}}
           selected={this.state.selectedTab === 'featured'}
           onPress={() => {
             this.setState({
@@ -42,7 +46,10 @@ class MovieTalk extends React.Component {
           <MovieList />
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          systemIcon="most-viewed"
+          // systemIcon="most-viewed"
+          icon={{uri: icons.board, scale: 4.6}}
+          title="北美票房"
+          selectedIcon={{uri: icons.boardActive, scale: 4.6}}          
           selected={this.state.selectedTab === 'us_box'}
           onPress={() => {
             this.setState({
