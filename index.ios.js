@@ -15,6 +15,7 @@ let {
   View,
   Image,
   ListView,
+  TabBarIOS,
 } = React;
 
 const REQUEST_URL = 'https://api.douban.com/v2/movie/top250';
@@ -26,7 +27,14 @@ class MovieTalk extends React.Component {
 
   render() {
     return (
-      <USBox />
+      <TabBarIOS>
+        <TabBarIOS.Item systemIcon="featured">
+          <MovieList />
+        </TabBarIOS.Item>
+        <TabBarIOS.Item systemIcon="most-viewed" selected="true">
+          <USBox />
+        </TabBarIOS.Item>
+      </TabBarIOS>
     );
   }
 }
