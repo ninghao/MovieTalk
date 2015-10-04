@@ -5,6 +5,7 @@
 
 import React from 'react-native';
 import styles from '../Styles/Main';
+import MovieDetail from './MovieDetail';
 
 let {
   Text,
@@ -44,13 +45,18 @@ class MovieList extends React.Component {
       .done();
   }
 
+  showMovieDetail(movie) {
+    this.props.navigator.push({
+      title: movie.title,
+      component: MovieDetail,
+    });
+  }
+
   renderMovieList(movie) {
     return (
       <TouchableHighlight
         underlayColor="rgba(34, 26, 38, 0.1)"
-        onPress={() => {
-          console.log(`《${movie.title}》被点了！`);
-        }}
+        onPress={() => this.showMovieDetail(movie)}
       >
         <View style={styles.item}>
           <View style={styles.itemImage}>
@@ -90,7 +96,7 @@ class MovieList extends React.Component {
       <View style={styles.container}>
         <ListView
           dataSource={this.state.movies}
-          renderRow={this.renderMovieList}
+          renderRow={this.renderMovieList.bind(this)}
         />
       </View>
     );
