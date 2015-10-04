@@ -8,6 +8,7 @@ import styles from './app/Styles/Main';
 import MovieList from './app/Components/MovieList';
 import USBox from './app/Components/USBox';
 import icons from './app/Assets/Icons';
+import Featured from './app/Components/Featured';
 
 let {
   AppRegistry,
@@ -25,7 +26,7 @@ class MovieTalk extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'us_box'
+      selectedTab: 'featured'
     };
   }
 
@@ -43,13 +44,13 @@ class MovieTalk extends React.Component {
               selectedTab: 'featured'
             });
           }}>
-          <MovieList />
+          <Featured />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           // systemIcon="most-viewed"
           icon={{uri: icons.board, scale: 4.6}}
           title="北美票房"
-          selectedIcon={{uri: icons.boardActive, scale: 4.6}}          
+          selectedIcon={{uri: icons.boardActive, scale: 4.6}}
           selected={this.state.selectedTab === 'us_box'}
           onPress={() => {
             this.setState({
