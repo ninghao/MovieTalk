@@ -75,7 +75,6 @@ let styles = StyleSheet.create({
     padding: 30,
   },
   container: {
-    flexDirection: 'row',
     backgroundColor: '#eae7ff',
     flex: 1,
   }
