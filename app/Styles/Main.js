@@ -11,7 +11,6 @@ let styles = StyleSheet.create({
     borderColor: 'rgba(100, 53, 201, 0.1)',
     paddingBottom: 6,
     paddingTop: 6,
-    flex: 1,
   },
   itemContent: {
     flex: 1,
@@ -68,11 +67,11 @@ let styles = StyleSheet.create({
     margin: 6,
   },
   itemText: {
-    fontSize: 33,
+    fontSize: 16,
     fontFamily: 'Helvetica Neue',
-    fontWeight: '200',
-    color: '#6435c9',
-    padding: 30,
+    fontWeight: '300',
+    color: 'rgba(0, 0, 0, 0.8)',
+    lineHeight: 26,
   },
   container: {
     backgroundColor: '#eae7ff',
