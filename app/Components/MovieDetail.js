@@ -19,7 +19,8 @@ class MovieDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieDetail: ''
+      movieDetail: '',
+      loaded: false,
     };
 
     const REQUEST_URL = `https://api.douban.com/v2/movie/subject/${this.props.movie.id}`;
@@ -32,13 +33,26 @@ class MovieDetail extends React.Component {
       .then(response => response.json())
       .then(responseData => {
         this.setState({
-          movieDetail: responseData
+          movieDetail: responseData,
+          loaded: true,
         });
       })
       .done();
   }
 
   render() {
+    if (!this.state.loaded) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.loading}>
+            <ActivityIndicatorIOS
+              size="large"
+              color="#6435c9"
+            />
+          </View>
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
         <View style={styles.loading}>
