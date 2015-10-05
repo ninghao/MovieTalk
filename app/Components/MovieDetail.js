@@ -53,12 +53,20 @@ class MovieDetail extends React.Component {
         </View>
       );
     }
+
+    let movie = this.state.movieDetail;
+    let summary = movie.summary.split(/\n/).map(p => {
+      return (
+        <View style={{marginBottom: 15, paddingLeft: 6, paddingRight: 6}}>
+          <Text style={styles.itemText}>{p}</Text>
+        </View>
+      );
+    });
+
     return (
       <View style={[styles.container, {paddingTop: 70}]}>
         <View style={[styles.item, {flexDirection: 'column'}]}>
-          <Text style={styles.itemText}>
-            {this.state.movieDetail.summary}
-          </Text>
+          {summary}
         </View>
       </View>
     );
