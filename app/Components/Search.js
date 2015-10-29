@@ -27,11 +27,11 @@ class Search extends React.Component {
           title: '搜索',
           component: SearchForm
         }}
-        shadowHidden="true"
+        shadowHidden={true}
         barTintColor="darkslateblue"
         titleTextColor="rgba(255, 255, 255, 0.8)"
         tintColor="rgba(255, 255, 255, 0.8)"
-        translucent="true"
+        translucent={true}
       />
     );
   }

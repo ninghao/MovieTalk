@@ -22,11 +22,11 @@ class Featured extends React.Component {
           title: '推荐电影',
           component: MovieList
         }}
-        shadowHidden="true"
+        shadowHidden={true}
         barTintColor="darkslateblue"
         titleTextColor="rgba(255, 255, 255, 0.8)"
         tintColor="rgba(255, 255, 255, 0.8)"
-        translucent="true"
+        translucent={true}
       />
     );
   }

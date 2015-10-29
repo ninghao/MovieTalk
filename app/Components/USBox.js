@@ -22,11 +22,11 @@ class USBox extends React.Component {
           title: '北美票房',
           component: USBoxList
         }}
-        shadowHidden="true"
+        shadowHidden={true}
         barTintColor="darkslateblue"
         titleTextColor="rgba(255, 255, 255, 0.8)"
         tintColor="rgba(255, 255, 255, 0.8)"
-        translucent="true"
+        translucent={true}
       />
     );
   }
