@@ -29,10 +29,12 @@ class SearchForm extends React.Component {
           borderColor: "rgba(100, 53, 201, 0.1)",
           borderBottomWidth: 1,
         }}>
-        <TextInput
-          style={{height: 50}}
-          placeholder="搜索 ..."
-         />
+          <TextInput
+            style={{height: 50}}
+            placeholder="搜索 ..."
+            clearButtonMode="while-editing"
+            returnKeyType="search"
+           />
          </View>
       </View>
     );
