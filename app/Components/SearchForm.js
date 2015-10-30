@@ -2,6 +2,7 @@
 
 import React from 'react-native';
 import styles from '../Styles/Main';
+import SearchResult from './SearchResult';
 
 let {
   Text,
@@ -28,6 +29,13 @@ class SearchForm extends React.Component {
       .then(response => response.json())
       .then(responseData => {
         console.log(responseData);
+        this.props.navigator.push({
+          title: responseData.title,
+          component: SearchResult,
+          passProps: {
+            results: responseData.subjects
+          }
+        });
       })
       .done();
   }
