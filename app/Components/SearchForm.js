@@ -19,15 +19,25 @@ class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      loaded: true,
+      opacity: 0,
     }
   }
 
   fetchData() {
+    this.setState({
+      loaded: false,
+      opacity: 1,
+    });
     const REQUEST_URL = `http://api.douban.com/v2/movie/search?q=${this.state.query}`
     fetch(REQUEST_URL)
       .then(response => response.json())
       .then(responseData => {
+        this.setState({
+          loaded: true,
+          opacity: 0,
+        });
         console.log(responseData);
         this.props.navigator.push({
           title: responseData.title,
@@ -61,6 +71,17 @@ class SearchForm extends React.Component {
               });
             }}
             onSubmitEditing={this.fetchData.bind(this)}
+           />
+           <ActivityIndicatorIOS
+             size="small"
+             color="#6435c9"
+             animating={!this.state.loaded}
+             style={{
+               position: 'absolute',
+               right: 10,
+               top: 20,
+               opacity: this.state.opacity
+             }}
            />
          </View>
       </View>
