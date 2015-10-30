@@ -34,6 +34,12 @@ class SearchForm extends React.Component {
             placeholder="搜索 ..."
             clearButtonMode="while-editing"
             returnKeyType="search"
+            onFocus={() => console.log('onFocus')}
+            onBlur={() => console.log('onBlur')}
+            onChange={() => console.log('onChange')}
+            onChangeText={(text) => console.log(text)}
+            onEndEditing={() => console.log('onEndEditing')}
+            onSubmitEditing={() => console.log('onSubmitEditing')}
            />
          </View>
       </View>
