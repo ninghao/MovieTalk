@@ -17,6 +17,19 @@ let {
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      query: ''
+    }
+  }
+
+  fetchData() {
+    const REQUEST_URL = `http://api.douban.com/v2/movie/search?q=${this.state.query}`
+    fetch(REQUEST_URL)
+      .then(response => response.json())
+      .then(responseData => {
+        console.log(responseData);
+      })
+      .done();
   }
 
   render() {
@@ -34,12 +47,12 @@ class SearchForm extends React.Component {
             placeholder="搜索 ..."
             clearButtonMode="while-editing"
             returnKeyType="search"
-            onFocus={() => console.log('onFocus')}
-            onBlur={() => console.log('onBlur')}
-            onChange={() => console.log('onChange')}
-            onChangeText={(text) => console.log(text)}
-            onEndEditing={() => console.log('onEndEditing')}
-            onSubmitEditing={() => console.log('onSubmitEditing')}
+            onChangeText={(query) => {
+              this.setState({
+                query
+              });
+            }}
+            onSubmitEditing={this.fetchData.bind(this)}
            />
          </View>
       </View>
