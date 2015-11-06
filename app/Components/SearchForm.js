@@ -67,12 +67,17 @@ class SearchForm extends React.Component {
       .done();
   }
 
-  search(item) {
-    this.setState({
-      query: item
-    });
+  async search(item) {
+    try {
+      await this.setState({
+        query: item
+      });
 
-    this.fetchData();
+      this.fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
   renderSearchHistoryList(item) {
