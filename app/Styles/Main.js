@@ -5,6 +5,12 @@ import React from 'react-native';
 let { StyleSheet } = React;
 
 let styles = StyleSheet.create({
+  searchHeader: {
+    color: 'rgba(0, 0, 0, 0.8)',
+    fontSize: 18,
+    marginTop: 30,
+    marginLeft: 10,
+  },
   item: {
     flexDirection: 'row',
     borderBottomWidth: 1,
