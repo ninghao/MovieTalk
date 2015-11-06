@@ -55,11 +55,11 @@ class SearchForm extends React.Component {
     //       .then((keys) => console.log(keys));
     //   });
 
-    AsyncStorage.clear()
-      .then(() => {
-        AsyncStorage.getAllKeys()
-          .then((keys) => console.log(keys));
-      });
+    // AsyncStorage.clear()
+    //   .then(() => {
+    //     AsyncStorage.getAllKeys()
+    //       .then((keys) => console.log(keys));
+    //   });
 
     // AsyncStorage.multiGet(['name', 'team', 'version'])
     //   .then((value) => console.log(value));
@@ -83,8 +83,17 @@ class SearchForm extends React.Component {
       query: '',
       loaded: true,
       opacity: 0,
-      searchHistory: ['fargo', 'matrix', 'hangover'],
+      searchHistory: [],
     }
+
+    AsyncStorage.getItem('searchHistory')
+      .then((searchHistory) => {
+        if (searchHistory) {
+          this.setState({
+            searchHistory: JSON.parse(searchHistory)
+          });
+        }
+      });
   }
 
   searchHistory() {
@@ -94,6 +103,10 @@ class SearchForm extends React.Component {
     this.setState({
       searchHistory: newSearchHistory
     });
+
+    AsyncStorage.setItem(
+      'searchHistory', JSON.stringify(newSearchHistory)
+    );
   }
 
   fetchData() {
@@ -143,6 +156,10 @@ class SearchForm extends React.Component {
     this.setState({
       searchHistory: [...newSearchHistory]
     });
+
+    AsyncStorage.setItem(
+      'searchHistory', JSON.stringify([...newSearchHistory])
+    );
   }
 
   renderSearchHistoryList(item) {
