@@ -37,10 +37,29 @@ class SearchForm extends React.Component {
     //   .then(() => {
     //     AsyncStorage.getItem('version')
     //       .then((value) => console.log(value));
+    //   })
+    //   .then(() => {
+    //     AsyncStorage.removeItem('version')
+    //       .then(() => {
+    //         AsyncStorage.getItem('version')
+    //           .then((value) => console.log(value));
+    //       });
     //   });
 
     // AsyncStorage.getAllKeys()
     //   .then((keys) => console.log(keys));
+
+    // AsyncStorage.multiRemove(['components', 'lastUpdate'])
+    //   .then(() => {
+    //     AsyncStorage.getAllKeys()
+    //       .then((keys) => console.log(keys));
+    //   });
+
+    AsyncStorage.clear()
+      .then(() => {
+        AsyncStorage.getAllKeys()
+          .then((keys) => console.log(keys));
+      });
 
     // AsyncStorage.multiGet(['name', 'team', 'version'])
     //   .then((value) => console.log(value));
