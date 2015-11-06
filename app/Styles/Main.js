@@ -5,6 +5,12 @@ import React from 'react-native';
 let { StyleSheet } = React;
 
 let styles = StyleSheet.create({
+  deleteIcon: {
+    width: 20,
+    height: 20,
+    margin: 10,
+    opacity: 0.6,
+  },
   searchHeader: {
     color: 'rgba(0, 0, 0, 0.8)',
     fontSize: 18,

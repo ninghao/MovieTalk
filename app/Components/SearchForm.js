@@ -3,6 +3,7 @@
 import React from 'react-native';
 import styles from '../Styles/Main';
 import SearchResult from './SearchResult';
+import icons from '../Assets/Icons';
 
 let {
   Text,
@@ -87,6 +88,15 @@ class SearchForm extends React.Component {
         onPress={() => this.search(item)}
       >
         <View style={styles.item}>
+          <TouchableHighlight
+            underlayColor="rgba(34, 26, 38, 0.1)"
+            onPress={() => {}}
+          >
+            <Image
+              source={{uri: icons.delete}}
+              style={styles.deleteIcon}
+             />
+          </TouchableHighlight>
           <View style={styles.itemContent}>
             <Text style={styles.itemHeader}>{item}</Text>
           </View>
