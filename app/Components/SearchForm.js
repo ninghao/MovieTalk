@@ -21,23 +21,40 @@ class SearchForm extends React.Component {
   constructor(props) {
     super(props);
 
-    AsyncStorage.setItem('name', 'movieTalk')
-      .then(() => {
-        AsyncStorage.getItem('name')
-          .then((value) => console.log(value));
-      });
+    // AsyncStorage.setItem('name', 'movieTalk')
+    //   .then(() => {
+    //     AsyncStorage.getItem('name')
+    //       .then((value) => console.log(value));
+    //   });
+    //
+    // AsyncStorage.setItem('team', 'ninghao.net')
+    //   .then(() => {
+    //     AsyncStorage.getItem('team')
+    //       .then((value) => console.log(value));
+    //   });
+    //
+    // AsyncStorage.setItem('version', '1.0.0')
+    //   .then(() => {
+    //     AsyncStorage.getItem('version')
+    //       .then((value) => console.log(value));
+    //   });
 
-    AsyncStorage.setItem('team', 'ninghao.net')
-      .then(() => {
-        AsyncStorage.getItem('team')
-          .then((value) => console.log(value));
-      });
+    // AsyncStorage.getAllKeys()
+    //   .then((keys) => console.log(keys));
 
-    AsyncStorage.setItem('version', '1.0.0')
-      .then(() => {
-        AsyncStorage.getItem('version')
-          .then((value) => console.log(value));
-      });
+    // AsyncStorage.multiGet(['name', 'team', 'version'])
+    //   .then((value) => console.log(value));
+
+    // AsyncStorage.multiSet([
+    //   ['lastUpdate', '2015/11/06'],
+    //   ['components', 'React Native']
+    // ])
+    // .then(() => {
+    //   AsyncStorage.multiGet([
+    //     'name', 'team', 'version', 'lastUpdate', 'components'
+    //   ])
+    //     .then((value) => console.log(value));
+    // });
 
     this.dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
