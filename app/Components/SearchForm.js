@@ -81,6 +81,15 @@ class SearchForm extends React.Component {
 
   }
 
+  deleteSearchHistoryItem(item) {
+    let newSearchHistory = new Set(this.state.searchHistory);
+    newSearchHistory.delete(item);
+
+    this.setState({
+      searchHistory: [...newSearchHistory]
+    });
+  }
+
   renderSearchHistoryList(item) {
     return (
       <TouchableHighlight
@@ -90,7 +99,7 @@ class SearchForm extends React.Component {
         <View style={styles.item}>
           <TouchableHighlight
             underlayColor="rgba(34, 26, 38, 0.1)"
-            onPress={() => {}}
+            onPress={() => this.deleteSearchHistoryItem(item)}
           >
             <Image
               source={{uri: icons.delete}}
