@@ -67,11 +67,19 @@ class SearchForm extends React.Component {
       .done();
   }
 
+  search(item) {
+    this.setState({
+      query: item
+    });
+
+    this.fetchData();
+  }
+
   renderSearchHistoryList(item) {
     return (
       <TouchableHighlight
         underlayColor="rgba(34, 26, 38, 0.1)"
-        onPress={() => {}}
+        onPress={() => this.search(item)}
       >
         <View style={styles.item}>
           <View style={styles.itemContent}>
@@ -93,6 +101,7 @@ class SearchForm extends React.Component {
           borderBottomWidth: 1,
         }}>
           <TextInput
+            value={this.state.query}
             style={{height: 50}}
             placeholder="搜索 ..."
             clearButtonMode="while-editing"
