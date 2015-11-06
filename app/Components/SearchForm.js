@@ -31,7 +31,18 @@ class SearchForm extends React.Component {
     }
   }
 
+  searchHistory() {
+    let newSearchHistory =
+      [this.state.query, ...this.state.searchHistory];
+
+    this.setState({
+      searchHistory: newSearchHistory
+    });
+  }
+
   fetchData() {
+    this.searchHistory();
+
     this.setState({
       loaded: false,
       opacity: 1,
