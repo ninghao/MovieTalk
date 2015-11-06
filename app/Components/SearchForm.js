@@ -33,7 +33,7 @@ class SearchForm extends React.Component {
 
   searchHistory() {
     let newSearchHistory =
-      [this.state.query, ...this.state.searchHistory];
+      [...new Set([this.state.query, ...this.state.searchHistory])];
 
     this.setState({
       searchHistory: newSearchHistory
