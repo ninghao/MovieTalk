@@ -16,8 +16,6 @@ let {
   TouchableHighlight,
 } = React;
 
-const REQUEST_URL = 'https://api.douban.com/v2/movie/top250';
-
 class MovieList extends React.Component {
   constructor(props) {
     super(props);
@@ -26,15 +24,30 @@ class MovieList extends React.Component {
       movies: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2
       }),
-      loaded: false
+      loaded: false,
+      count: 3,
+      start: 3,
+      total: 0,
     };
+
+    this.REQUEST_URL = 'https://api.douban.com/v2/movie/top250';
 
     this.fetchData();
 
   }
 
+  requestURL(
+    url = this.REQUEST_URL,
+    count = this.state.count,
+    start = this.state.start
+  ) {
+    return (
+      `${url}?count=${count}&start=${start}`
+    );
+  }
+
   fetchData() {
-    fetch(REQUEST_URL)
+    fetch(this.requestURL())
       .then(response => response.json())
       .then(responseData => {
         this.setState({
