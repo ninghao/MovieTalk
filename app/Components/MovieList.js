@@ -121,6 +121,38 @@ class MovieList extends React.Component {
     }
   }
 
+  renderFooter() {
+    if (this.state.total > this.state.start) {
+      return (
+        <View
+          style={{
+            marginVertical: 20,
+            paddingBottom: 50,
+            alignSelf: 'center'
+          }}
+        >
+          <ActivityIndicatorIOS />
+        </View>
+      );
+    } else {
+      return (
+        <View
+          style={{
+            marginVertical: 20,
+            paddingBottom: 50,
+            alignSelf: 'center'
+          }}
+        >
+          <Text
+            style={{
+              color: 'rgba(0, 0, 0, 0.3)'
+            }}
+          >没有可以显示的内容了：）</Text>
+        </View>
+      );
+    }
+  }
+
   render() {
     if (!this.state.loaded) {
       return (
@@ -137,6 +169,7 @@ class MovieList extends React.Component {
     return (
       <View style={styles.container}>
         <ListView
+          renderFooter={this.renderFooter.bind(this)}
           pageSize={this.state.count}
           onEndReached={this.onEndReached.bind(this)}
           initialListSize={this.state.count}
