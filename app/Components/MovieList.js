@@ -98,10 +98,27 @@ class MovieList extends React.Component {
     );
   }
 
+  loadMore() {
+    fetch(this.requestURL())
+      .then(response => response.json())
+      .then(responseData => {
+        let newStart = responseData.start + responseData.count;
+        this.setState({
+          movies: [...this.state.movies, ...responseData.subjects],
+          start: newStart
+        });
+      })
+      .done();
+  }
+
   onEndReached() {
     console.log(
       `到底了！开始：${this.state.start}，总共：${this.state.total}`
     );
+
+    if (this.state.total > this.state.start) {
+      this.loadMore();
+    }
   }
 
   render() {
@@ -120,6 +137,7 @@ class MovieList extends React.Component {
     return (
       <View style={styles.container}>
         <ListView
+          pageSize={this.state.count}
           onEndReached={this.onEndReached.bind(this)}
           initialListSize={this.state.count}
           dataSource={this.dataSource.cloneWithRows(this.state.movies)}
