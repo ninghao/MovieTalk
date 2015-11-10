@@ -21,14 +21,16 @@ class MovieList extends React.Component {
     super(props);
 
     this.state = {
-      movies: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2
-      }),
+      movies: [],
       loaded: false,
       count: 20,
       start: 0,
       total: 0,
     };
+
+    this.dataSource = new ListView.DataSource({
+      rowHasChanged: (row1, row2) => row1 !== row2
+    });
 
     this.REQUEST_URL = 'https://api.douban.com/v2/movie/top250';
 
@@ -52,7 +54,7 @@ class MovieList extends React.Component {
       .then(responseData => {
         let newStart = responseData.start + responseData.count;
         this.setState({
-          movies: this.state.movies.cloneWithRows(responseData.subjects),
+          movies: responseData.subjects,
           loaded: true,
           total: responseData.total,
           start: newStart,
@@ -120,7 +122,7 @@ class MovieList extends React.Component {
         <ListView
           onEndReached={this.onEndReached.bind(this)}
           initialListSize={this.state.count}
-          dataSource={this.state.movies}
+          dataSource={this.dataSource.cloneWithRows(this.state.movies)}
           renderRow={this.renderMovieList.bind(this)}
         />
       </View>
