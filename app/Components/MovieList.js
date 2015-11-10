@@ -50,9 +50,12 @@ class MovieList extends React.Component {
     fetch(this.requestURL())
       .then(response => response.json())
       .then(responseData => {
+        let newStart = responseData.start + responseData.count;
         this.setState({
           movies: this.state.movies.cloneWithRows(responseData.subjects),
           loaded: true,
+          total: responseData.total,
+          start: newStart,
         });
       })
       .done();
@@ -94,7 +97,9 @@ class MovieList extends React.Component {
   }
 
   onEndReached() {
-    console.log('到底了！');
+    console.log(
+      `到底了！开始：${this.state.start}，总共：${this.state.total}`
+    );
   }
 
   render() {
