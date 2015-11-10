@@ -25,8 +25,8 @@ class MovieList extends React.Component {
         rowHasChanged: (row1, row2) => row1 !== row2
       }),
       loaded: false,
-      count: 3,
-      start: 3,
+      count: 20,
+      start: 0,
       total: 0,
     };
 
@@ -109,6 +109,7 @@ class MovieList extends React.Component {
     return (
       <View style={styles.container}>
         <ListView
+          initialListSize={this.state.count}
           dataSource={this.state.movies}
           renderRow={this.renderMovieList.bind(this)}
         />
