@@ -52,7 +52,7 @@ class MovieList extends React.Component {
       .then(responseData => {
         this.setState({
           movies: this.state.movies.cloneWithRows(responseData.subjects),
-          loaded: true
+          loaded: true,
         });
       })
       .done();
@@ -93,6 +93,10 @@ class MovieList extends React.Component {
     );
   }
 
+  onEndReached() {
+    console.log('到底了！');
+  }
+
   render() {
     if (!this.state.loaded) {
       return (
@@ -109,6 +113,7 @@ class MovieList extends React.Component {
     return (
       <View style={styles.container}>
         <ListView
+          onEndReached={this.onEndReached.bind(this)}
           initialListSize={this.state.count}
           dataSource={this.state.movies}
           renderRow={this.renderMovieList.bind(this)}
