@@ -18,13 +18,19 @@ class SearchResult extends React.Component {
   constructor(props) {
     super(props);
 
-    let dataSource = new ListView.DataSource({
+    this.dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
     });
 
     this.state = {
-      movies: dataSource.cloneWithRows(this.props.results)
+      movies: this.props.results.subjects,
+      total: this.props.results.total,
+      count: this.props.results.count,
+      start: this.props.results.count,
+      query: this.props.query,
     }
+
+    this.REQUEST_URL = 'http://api.douban.com/v2/movie/search';
   }
 
   showMovieDetail(movie) {
@@ -62,11 +68,82 @@ class SearchResult extends React.Component {
     );
   }
 
+  requestURL(
+    url = this.REQUEST_URL,
+    count = this.state.count,
+    start = this.state.start,
+    query = this.state.query
+  ) {
+    return (
+      `${url}?q=${query}&count=${count}&start=${start}`
+    );
+  }
+
+  loadMore() {
+    fetch(this.requestURL())
+      .then(response => response.json())
+      .then(responseData => {
+        console.log(responseData);
+        let newStart = responseData.start + responseData.count;
+        this.setState({
+          movies: [...this.state.movies, ...responseData.subjects],
+          start: newStart
+        });
+      })
+      .done();
+  }
+
+  onEndReached() {
+    console.log(
+      `到底了！开始：${this.state.start}，总共：${this.state.total}`
+    );
+
+    if (this.state.total > this.state.start) {
+      this.loadMore();
+    }
+  }
+
+  renderFooter() {
+    if (this.state.total > this.state.start) {
+      return (
+        <View
+          style={{
+            marginVertical: 20,
+            paddingBottom: 50,
+            alignSelf: 'center'
+          }}
+        >
+          <ActivityIndicatorIOS />
+        </View>
+      );
+    } else {
+      return (
+        <View
+          style={{
+            marginVertical: 20,
+            paddingBottom: 50,
+            alignSelf: 'center'
+          }}
+        >
+          <Text
+            style={{
+              color: 'rgba(0, 0, 0, 0.3)'
+            }}
+          >没有可以显示的内容了：）</Text>
+        </View>
+      );
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <ListView
-          dataSource={this.state.movies}
+          renderFooter={this.renderFooter.bind(this)}
+          pageSize={this.state.count}
+          onEndReached={this.onEndReached.bind(this)}
+          initialListSize={this.state.count}
+          dataSource={this.dataSource.cloneWithRows(this.state.movies)}
           renderRow={this.renderMovieList.bind(this)}
         />
       </View>
