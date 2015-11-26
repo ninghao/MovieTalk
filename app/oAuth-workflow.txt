@@ -1,0 +1,26 @@
+#准备
+
+* api key：
+* secret：
+* auth 地址：
+* token 地址：
+
+#实施
+
+##1 获取 authorization_code
+    方法：GET
+    地址：
+
+    authorization_code：
+
+##2 获取 access_token
+    方法：POST
+    地址：
+
+    access_token：
+
+##3 请求 API
+    地址：
+
+    Header：
+      Authorization Bearer ACCESS_TOKEN
