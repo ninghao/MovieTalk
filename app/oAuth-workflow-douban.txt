@@ -1,0 +1,50 @@
+#准备
+
+* api key：
+    05b2e24806124f0f1118a6d81236ed2d
+* secret：
+    132f022db4330578
+* auth 地址：
+    https://www.douban.com/service/auth2/auth
+* token 地址：
+    https://www.douban.com/service/auth2/token
+
+#实施
+
+##1 获取 authorization_code
+    方法：GET
+    地址：
+      https://www.douban.com/service/auth2/auth
+        ?client_id=05b2e24806124f0f1118a6d81236ed2d
+        &redirect_uri=http://ninghao.net
+        &response_type=code
+        &scope=douban_basic_common,movie_basic,movie_basic_r,movie_basic_w
+
+    authorization_code：
+      11d874d017ece19e
+
+##2 获取 access_token
+    方法：POST
+    地址：
+      https://www.douban.com/service/auth2/token
+        ?client_id=05b2e24806124f0f1118a6d81236ed2d
+        &client_secret=132f022db4330578
+        &redirect_uri=http://ninghao.net
+        &grant_type=authorization_code
+        &code=11d874d017ece19e
+
+    access_token：
+      {
+        "access_token": "697cd8dbdcde26ba3c768a93969a742e",
+        "douban_user_name": "王皓",
+        "douban_user_id": "3652751",
+        "expires_in": 604800,
+        "refresh_token": "03f38229d6e2c9140bda867d84a85b3c"
+      }
+
+##3 请求 API
+    地址：
+      https://api.douban.com/v2/user/~me
+
+    Header：
+      Authorization Bearer 697cd8dbdcde26ba3c768a93969a742e
