@@ -10,6 +10,7 @@ import USBox from './app/Components/USBox';
 import icons from './app/Assets/Icons';
 import Featured from './app/Components/Featured';
 import Search from './app/Components/Search';
+import User from './app/Components/User';
 
 let {
   AppRegistry,
@@ -27,7 +28,7 @@ class MovieTalk extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'featured'
+      selectedTab: 'user'
     };
   }
 
@@ -70,6 +71,17 @@ class MovieTalk extends React.Component {
             });
           }}>
           <Search />
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          icon={{uri: icons.user, scale: 3.3}}
+          title="我的"
+          selected={this.state.selectedTab === 'user'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'user'
+            });
+          }}>
+          <User />
         </TabBarIOS.Item>
       </TabBarIOS>
     );
