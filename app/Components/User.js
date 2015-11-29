@@ -27,11 +27,11 @@ class User extends React.Component {
           title: '我的',
           component: UserProfile
         }}
-        shadowHidden="{true}"
+        shadowHidden={true}
         barTintColor="darkslateblue"
         titleTextColor="rgba(255, 255, 255, 0.8)"
         tintColor="rgba(255, 255, 255, 0.8)"
-        translucent="{true}"
+        translucent={true}
       />
     );
   }

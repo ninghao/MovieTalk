@@ -11,6 +11,7 @@ let {
   ActivityIndicatorIOS,
   TouchableHighlight,
   NavigatorIOS,
+  WebView,
 } = React;
 
 class Login extends React.Component {
@@ -18,11 +19,17 @@ class Login extends React.Component {
     super(props);
   }
 
+  onNavigationStateChange(state) {
+    console.log(state);
+  }
+
   render() {
     return (
-      <View style={[styles.container, styles.loading]}>
-        <Text>登录页面</Text>
-      </View>
+      <WebView
+        startInLoadingState={true}
+        url="http://ninghao.net"
+        onNavigationStateChange={this.onNavigationStateChange.bind(this)}
+      />
     );
   }
 }
