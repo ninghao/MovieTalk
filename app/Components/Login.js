@@ -17,6 +17,30 @@ let {
 class Login extends React.Component {
   constructor(props) {
     super(props);
+
+    let api = {
+      key: '05b2e24806124f0f1118a6d81236ed2d',
+      secret: '132f022db4330578',
+    }
+
+    let oAuth = {
+      authBaseUrl: 'https://www.douban.com/service/auth2/auth',
+      tokenBaseUrl: 'https://www.douban.com/service/auth2/token',
+      redirectUri: 'http://ninghao.net',
+      responseType: 'code',
+      grantType: 'authorization_code',
+      scope: 'douban_basic_common,movie_basic,movie_basic_r,movie_basic_w',
+    }
+
+    this.state = {
+      authCode: '',
+    }
+
+    this.authUrl = `${oAuth.authBaseUrl}
+      ?client_id=${api.key}
+      &redirect_uri=${oAuth.redirectUri}
+      &response_type=${oAuth.responseType}
+      &scope=${oAuth.scope}`.replace(/(\r\n|\n|\r| )/gm, '');
   }
 
   onNavigationStateChange(state) {
@@ -27,7 +51,7 @@ class Login extends React.Component {
     return (
       <WebView
         startInLoadingState={true}
-        url="http://ninghao.net"
+        url={this.authUrl}
         onNavigationStateChange={this.onNavigationStateChange.bind(this)}
       />
     );
