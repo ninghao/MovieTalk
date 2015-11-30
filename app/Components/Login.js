@@ -12,6 +12,7 @@ let {
   TouchableHighlight,
   NavigatorIOS,
   WebView,
+  AsyncStorage,
 } = React;
 
 class Login extends React.Component {
@@ -57,7 +58,7 @@ class Login extends React.Component {
     })
       .then(response => response.json())
       .then(responseData => {
-        console.log(responseData);
+        AsyncStorage.setItem('token', JSON.stringify(responseData));
       })
       .done();
   }
