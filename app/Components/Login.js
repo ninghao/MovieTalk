@@ -60,6 +60,7 @@ class Login extends React.Component {
       .then(responseData => {
         AsyncStorage.setItem('token', JSON.stringify(responseData));
       })
+      .then(() => this.props.navigator.pop())
       .done();
   }
 
