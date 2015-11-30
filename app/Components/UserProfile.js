@@ -13,6 +13,7 @@ let {
   TouchableHighlight,
   NavigatorIOS,
   AsyncStorage,
+  PixelRatio,
 } = React;
 
 class UserProfile extends React.Component {
@@ -92,8 +93,35 @@ class UserProfile extends React.Component {
 
   render() {
     return (
-      <View style={[styles.container, styles.loading]}>
-        <Text>我的档案</Text>
+      <View style={[styles.container, {
+        flexDirection: 'column',
+        paddingTop: 160,
+      }]}>
+        <View style={{
+          flex: 1,
+          alignSelf: 'center',
+        }}>
+          <Image
+            source={{uri: this.state.user.large_avatar}}
+            style={{
+              width: 90,
+              height: 90,
+              borderRadius: 90 / PixelRatio.get(),
+            }}
+          />
+
+          <Text style={{
+            marginVertical: 15,
+            fontSize: 18,
+            textAlign: 'center',
+          }}>{this.state.user.name}</Text>
+
+          <Text style={{
+            color: 'rgba(0, 0, 0, 0.6)',
+            marginBottom: 10,
+            textAlign: 'center',
+          }}>{this.state.user.desc}</Text>
+        </View>
       </View>
     );
   }
