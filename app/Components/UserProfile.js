@@ -91,6 +91,19 @@ class UserProfile extends React.Component {
     });
   }
 
+  logout() {
+    AsyncStorage.removeItem('token')
+      .then(() => {
+        this.setState({
+          token: '',
+          user: {},
+        });
+      })
+      .then(() => {
+        this.login();
+      });
+  }
+
   render() {
     return (
       <View style={[styles.container, {
@@ -122,6 +135,28 @@ class UserProfile extends React.Component {
             textAlign: 'center',
           }}>{this.state.user.desc}</Text>
         </View>
+
+        <TouchableHighlight
+          underlayColor="rgba(34, 26, 38, 0.1)"
+          onPress={() => this.logout()}
+          style={{
+            margin: 10,
+            justifyContent: 'flex-end',
+            marginBottom: 90,
+          }}
+        >
+          <View style={{
+            backgroundColor: '#9182E6',
+            borderRadius: 3,
+            padding: 13,
+          }}>
+            <Text style={{
+              alignSelf: 'center',
+              color: 'rgba(255, 255, 255, 0.9)'
+            }}>退出登录</Text>
+          </View>
+        </TouchableHighlight>
+
       </View>
     );
   }
