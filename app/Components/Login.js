@@ -50,6 +50,16 @@ class Login extends React.Component {
       &redirect_uri=${this.oAuth.redirectUri}
       &grant_type=${this.oAuth.grantType}
       &code=${this.state.authCode}`.replace(/(\r\n|\n|\r| )/gm, '');
+
+    fetch(tokenUrl, {
+      method: 'POST',
+      body: `client_id=${this.api.key}`
+    })
+      .then(response => response.json())
+      .then(responseData => {
+        console.log(responseData);
+      })
+      .done();
   }
 
   async onNavigationStateChange(state) {
