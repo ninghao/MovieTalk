@@ -20,7 +20,8 @@ class UserProfile extends React.Component {
     super(props);
 
     this.state = {
-      token: ''
+      token: '',
+      user: {}
     }
 
     this.login();
@@ -65,7 +66,21 @@ class UserProfile extends React.Component {
   }
 
   getCurrentUser() {
-    console.log('获取当前登录用户的资料');
+    fetch('https://api.douban.com/v2/user/~me', {
+      headers: {
+        'Authorization': `Bearer ${this.state.token}`
+      }
+    })
+      .then(response => response.json())
+      .then(responseData => {
+        this.setState({
+          user: responseData
+        });
+      })
+      .then(() => {
+        console.log(this.state.user);
+      })
+      .done();
   }
 
   redirectToLogin() {
