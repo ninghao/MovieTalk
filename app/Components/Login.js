@@ -18,12 +18,12 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
 
-    let api = {
+    this.api = {
       key: '05b2e24806124f0f1118a6d81236ed2d',
       secret: '132f022db4330578',
     }
 
-    let oAuth = {
+    this.oAuth = {
       authBaseUrl: 'https://www.douban.com/service/auth2/auth',
       tokenBaseUrl: 'https://www.douban.com/service/auth2/token',
       redirectUri: 'http://ninghao.net',
@@ -36,11 +36,20 @@ class Login extends React.Component {
       authCode: '',
     }
 
-    this.authUrl = `${oAuth.authBaseUrl}
-      ?client_id=${api.key}
-      &redirect_uri=${oAuth.redirectUri}
-      &response_type=${oAuth.responseType}
-      &scope=${oAuth.scope}`.replace(/(\r\n|\n|\r| )/gm, '');
+    this.authUrl = `${this.oAuth.authBaseUrl}
+      ?client_id=${this.api.key}
+      &redirect_uri=${this.oAuth.redirectUri}
+      &response_type=${this.oAuth.responseType}
+      &scope=${this.oAuth.scope}`.replace(/(\r\n|\n|\r| )/gm, '');
+  }
+
+  getToken() {
+    let tokenUrl = `${this.oAuth.tokenBaseUrl}
+      ?client_id=${this.api.key}
+      &client_secret=${this.api.secret}
+      &redirect_uri=${this.oAuth.redirectUri}
+      &grant_type=${this.oAuth.grantType}
+      &code=${this.state.authCode}`.replace(/(\r\n|\n|\r| )/gm, '');
   }
 
   async onNavigationStateChange(state) {
@@ -50,6 +59,8 @@ class Login extends React.Component {
         authCode: code
       });
       console.log(this.state.authCode);
+
+      this.getToken();
     }
   }
 
