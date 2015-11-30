@@ -43,8 +43,14 @@ class Login extends React.Component {
       &scope=${oAuth.scope}`.replace(/(\r\n|\n|\r| )/gm, '');
   }
 
-  onNavigationStateChange(state) {
-    console.log(state);
+  async onNavigationStateChange(state) {
+    if (state.url.includes('?code=') && state.navigationType === 1) {
+      let code = state.url.split('code=')[1];
+      await this.setState({
+        authCode: code
+      });
+      console.log(this.state.authCode);
+    }
   }
 
   render() {
