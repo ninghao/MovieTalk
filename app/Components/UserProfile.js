@@ -22,7 +22,8 @@ class UserProfile extends React.Component {
 
     this.state = {
       token: '',
-      user: {}
+      user: {},
+      loaded: false,
     }
 
     this.login();
@@ -75,7 +76,8 @@ class UserProfile extends React.Component {
       .then(response => response.json())
       .then(responseData => {
         this.setState({
-          user: responseData
+          user: responseData,
+          loaded: true,
         });
       })
       .then(() => {
@@ -97,6 +99,7 @@ class UserProfile extends React.Component {
         this.setState({
           token: '',
           user: {},
+          loaded: false,
         });
       })
       .then(() => {
@@ -105,60 +108,73 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    return (
-      <View style={[styles.container, {
-        flexDirection: 'column',
-        paddingTop: 160,
-      }]}>
-        <View style={{
-          flex: 1,
-          alignSelf: 'center',
-        }}>
-          <Image
-            source={{uri: this.state.user.large_avatar}}
-            style={{
-              width: 90,
-              height: 90,
-              borderRadius: 90 / PixelRatio.get(),
-            }}
-          />
-
-          <Text style={{
-            marginVertical: 15,
-            fontSize: 18,
-            textAlign: 'center',
-          }}>{this.state.user.name}</Text>
-
-          <Text style={{
-            color: 'rgba(0, 0, 0, 0.6)',
-            marginBottom: 10,
-            textAlign: 'center',
-          }}>{this.state.user.desc}</Text>
-        </View>
-
-        <TouchableHighlight
-          underlayColor="rgba(34, 26, 38, 0.1)"
-          onPress={() => this.logout()}
-          style={{
-            margin: 10,
-            justifyContent: 'flex-end',
-            marginBottom: 90,
-          }}
-        >
-          <View style={{
-            backgroundColor: '#9182E6',
-            borderRadius: 3,
-            padding: 13,
-          }}>
-            <Text style={{
-              alignSelf: 'center',
-              color: 'rgba(255, 255, 255, 0.9)'
-            }}>退出登录</Text>
+    if (!this.state.loaded) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.loading}>
+            <ActivityIndicatorIOS
+              size="large"
+              color="#6435c9"
+            />
           </View>
-        </TouchableHighlight>
+        </View>
+      );
+    } else {
+      return (
+        <View style={[styles.container, {
+          flexDirection: 'column',
+          paddingTop: 160,
+        }]}>
+          <View style={{
+            flex: 1,
+            alignSelf: 'center',
+          }}>
+            <Image
+              source={{uri: this.state.user.large_avatar}}
+              style={{
+                width: 90,
+                height: 90,
+                borderRadius: 90 / PixelRatio.get(),
+              }}
+            />
 
-      </View>
-    );
+            <Text style={{
+              marginVertical: 15,
+              fontSize: 18,
+              textAlign: 'center',
+            }}>{this.state.user.name}</Text>
+
+            <Text style={{
+              color: 'rgba(0, 0, 0, 0.6)',
+              marginBottom: 10,
+              textAlign: 'center',
+            }}>{this.state.user.desc}</Text>
+          </View>
+
+          <TouchableHighlight
+            underlayColor="rgba(34, 26, 38, 0.1)"
+            onPress={() => this.logout()}
+            style={{
+              margin: 10,
+              justifyContent: 'flex-end',
+              marginBottom: 90,
+            }}
+          >
+            <View style={{
+              backgroundColor: '#9182E6',
+              borderRadius: 3,
+              padding: 13,
+            }}>
+              <Text style={{
+                alignSelf: 'center',
+                color: 'rgba(255, 255, 255, 0.9)'
+              }}>退出登录</Text>
+            </View>
+          </TouchableHighlight>
+
+        </View>
+      );
+    }
   }
 }
 
