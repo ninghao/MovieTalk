@@ -75,14 +75,14 @@ class MovieList extends React.Component {
         <View style={styles.item}>
           <View style={styles.itemImage}>
             <Image
-              source={{/*uri: movie.images.large*/}}
+              source={{uri: movie.field_poster.replace(/(\r\n|\n|\r| )/gm, '')}}
               style={styles.image}
              />
           </View>
           <View style={styles.itemContent}>
             <Text style={styles.itemHeader}>{movie.title}</Text>
             <Text style={styles.itemMeta}>
-              {/*movie.original_title*/} ( {/*movie.year*/} )
+              {movie.field_name} ( {movie.field_release_date} )
             </Text>
             <Text style={styles.redText}>
               {/*movie.rating.average*/}
