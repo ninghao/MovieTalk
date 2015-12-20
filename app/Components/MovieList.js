@@ -23,9 +23,9 @@ class MovieList extends React.Component {
     this.state = {
       movies: [],
       loaded: false,
-      count: 20,
-      start: 0,
-      total: 0,
+      count: 10,
+      page: 0,
+      noResult: false,
     };
 
     this.dataSource = new ListView.DataSource({
@@ -39,10 +39,11 @@ class MovieList extends React.Component {
   }
 
   requestURL(
-    url = this.REQUEST_URL
+    url = this.REQUEST_URL,
+    page = this.state.page
   ) {
     return (
-      `${url}`
+      `${url}?page=${page}`
     );
   }
 
@@ -53,6 +54,7 @@ class MovieList extends React.Component {
         this.setState({
           movies: responseData,
           loaded: true,
+          page: this.state.page + 1
         });
       })
       .done();
@@ -97,11 +99,16 @@ class MovieList extends React.Component {
     fetch(this.requestURL())
       .then(response => response.json())
       .then(responseData => {
-        let newStart = responseData.start + responseData.count;
         this.setState({
-          movies: [...this.state.movies, ...responseData.subjects],
-          start: newStart
+          movies: [...this.state.movies, ...responseData],
+          page: this.state.page + 1
         });
+
+        if (responseData.length === 0) {
+          this.setState({
+            noResult: true
+          });
+        }
       })
       .done();
   }
@@ -111,13 +118,11 @@ class MovieList extends React.Component {
       `到底了！开始：${this.state.start}，总共：${this.state.total}`
     );
 
-    if (this.state.total > this.state.start) {
-      this.loadMore();
-    }
+    this.loadMore();
   }
 
   renderFooter() {
-    if (this.state.total > this.state.start) {
+    if (!this.state.noResult) {
       return (
         <View
           style={{
