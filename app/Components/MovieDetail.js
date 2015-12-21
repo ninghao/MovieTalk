@@ -23,13 +23,17 @@ class MovieDetail extends React.Component {
       loaded: false,
     };
 
-    const REQUEST_URL = `https://api.douban.com/v2/movie/subject/${this.props.movie.id}`;
+    const REQUEST_URL = `http://web-stack.drupal-8.ninghao.local/node/${this.props.movie.nid}?_format=hal_json`;
 
     this.fetchData(REQUEST_URL);
   }
 
   fetchData(REQUEST_URL) {
-    fetch(REQUEST_URL)
+    fetch(REQUEST_URL, {
+      headers: {
+        'Accept': 'application/hal+json'
+      }
+    })
       .then(response => response.json())
       .then(responseData => {
         this.setState({
@@ -55,7 +59,7 @@ class MovieDetail extends React.Component {
     }
 
     let movie = this.state.movieDetail;
-    let summary = movie.summary.split(/\n/).map(p => {
+    let summary = movie.body[0].value.split(/\r\n\r\n/).map(p => {
       return (
         <View style={{marginBottom: 15, paddingLeft: 6, paddingRight: 6}}>
           <Text style={styles.itemText}>{p}</Text>
