@@ -1,7 +1,3 @@
 {
-  "whitelist": [
-    "es6.modules",
-    "es6.classes",
-    "es7.asyncFunctions",
-  ]
+
 }
