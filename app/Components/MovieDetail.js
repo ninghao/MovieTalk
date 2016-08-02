@@ -54,9 +54,9 @@ class MovieDetail extends Component {
     }
 
     let movie = this.state.movieDetail;
-    let summary = movie.summary.split(/\n/).map(p => {
+    let summary = movie.summary.split(/\n/).map((p, index) => {
       return (
-        <View style={{marginBottom: 15, paddingLeft: 6, paddingRight: 6}}>
+        <View key={index} style={{marginBottom: 15, paddingLeft: 6, paddingRight: 6}}>
           <Text style={styles.itemText}>{p}</Text>
         </View>
       );
