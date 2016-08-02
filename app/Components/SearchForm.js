@@ -6,7 +6,7 @@ import {
   View,
   Image,
   ListView,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   TouchableHighlight,
   NavigatorIOS,
   TextInput,
@@ -211,7 +211,7 @@ class SearchForm extends Component {
             }}
             onSubmitEditing={this.fetchData.bind(this)}
            />
-           <ActivityIndicatorIOS
+           <ActivityIndicator
              size="small"
              color="#6435c9"
              animating={!this.state.loaded}

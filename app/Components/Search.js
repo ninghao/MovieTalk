@@ -6,7 +6,7 @@ import {
   View,
   Image,
   ListView,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   TouchableHighlight,
   NavigatorIOS
 } from 'react-native';

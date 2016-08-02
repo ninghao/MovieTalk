@@ -6,7 +6,7 @@ import {
   View,
   Image,
   ListView,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   TouchableHighlight,
   NavigatorIOS
 } from 'react-native';
@@ -113,7 +113,7 @@ class SearchResult extends Component {
             alignSelf: 'center'
           }}
         >
-          <ActivityIndicatorIOS />
+          <ActivityIndicator />
         </View>
       );
     } else {

@@ -9,7 +9,7 @@ import {
   View,
   Image,
   ListView,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   TouchableHighlight,
 } from 'react-native';
 import styles from '../Styles/Main';
@@ -44,7 +44,7 @@ class MovieDetail extends Component {
       return (
         <View style={styles.container}>
           <View style={styles.loading}>
-            <ActivityIndicatorIOS
+            <ActivityIndicator
               size="large"
               color="#6435c9"
             />

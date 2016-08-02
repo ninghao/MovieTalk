@@ -6,7 +6,7 @@ import {
   View,
   Image,
   ListView,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   TouchableHighlight,
   NavigatorIOS,
   AsyncStorage,
@@ -112,7 +112,7 @@ class UserProfile extends Component {
       return (
         <View style={styles.container}>
           <View style={styles.loading}>
-            <ActivityIndicatorIOS
+            <ActivityIndicator
               size="large"
               color="#6435c9"
             />

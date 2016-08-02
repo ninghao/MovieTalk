@@ -9,7 +9,7 @@ import {
   View,
   Image,
   ListView,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   TouchableHighlight
 } from 'react-native';
 
@@ -85,7 +85,7 @@ class USBox extends Component {
       return (
         <View style={styles.container}>
           <View style={styles.loading}>
-            <ActivityIndicatorIOS
+            <ActivityIndicator
               size="large"
               color="#6435c9"
             />
