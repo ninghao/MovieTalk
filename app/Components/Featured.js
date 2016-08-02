@@ -3,17 +3,17 @@
  */
 'use strict';
 
-import React from 'react-native';
+import React, { Component } from 'react';
+import {
+  Text,
+  View,
+  NavigatorIOS
+} from 'react-native';
+
 import styles from '../Styles/Main';
 import MovieList from './MovieList';
 
-let {
-  Text,
-  View,
-  NavigatorIOS,
-} = React;
-
-class Featured extends React.Component {
+class Featured extends Component {
   render() {
     return (
       <NavigatorIOS

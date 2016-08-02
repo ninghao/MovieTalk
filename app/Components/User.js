@@ -1,20 +1,20 @@
 'use strict';
 
-import React from 'react-native';
-import styles from '../Styles/Main';
-import UserProfile from './UserProfile';
-
-let {
+import React, { Component } from 'react';
+import {
   Text,
   View,
   Image,
   ListView,
   ActivityIndicatorIOS,
   TouchableHighlight,
-  NavigatorIOS,
-} = React;
+  NavigatorIOS
+} from 'react-native';
 
-class User extends React.Component {
+import styles from '../Styles/Main';
+import UserProfile from './UserProfile';
+
+class User extends Component {
   constructor(props) {
     super(props);
   }

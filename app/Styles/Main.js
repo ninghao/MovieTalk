@@ -1,8 +1,7 @@
 'use strict';
 
-import React from 'react-native';
-
-let { StyleSheet } = React;
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 
 let styles = StyleSheet.create({
   deleteIcon: {

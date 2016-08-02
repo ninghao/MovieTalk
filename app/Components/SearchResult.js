@@ -1,20 +1,20 @@
 'use strict';
 
-import React from 'react-native';
-import MovieDetail from './MovieDetail';
-import styles from '../Styles/Main';
-
-let {
+import React, { Component } from 'react';
+import {
   Text,
   View,
   Image,
   ListView,
   ActivityIndicatorIOS,
   TouchableHighlight,
-  NavigatorIOS,
-} = React;
+  NavigatorIOS
+} from 'react-native';
 
-class SearchResult extends React.Component {
+import MovieDetail from './MovieDetail';
+import styles from '../Styles/Main';
+
+class SearchResult extends Component {
   constructor(props) {
     super(props);
 

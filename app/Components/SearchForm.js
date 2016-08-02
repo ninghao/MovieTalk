@@ -1,11 +1,7 @@
 'use strict';
 
-import React from 'react-native';
-import styles from '../Styles/Main';
-import SearchResult from './SearchResult';
-import icons from '../Assets/Icons';
-
-let {
+import React, { Component } from 'react';
+import {
   Text,
   View,
   Image,
@@ -14,10 +10,15 @@ let {
   TouchableHighlight,
   NavigatorIOS,
   TextInput,
-  AsyncStorage,
-} = React;
+  AsyncStorage
+} from 'react-native';
 
-class SearchForm extends React.Component {
+import styles from '../Styles/Main';
+import SearchResult from './SearchResult';
+import icons from '../Assets/Icons';
+
+
+class SearchForm extends Component {
   constructor(props) {
     super(props);
 

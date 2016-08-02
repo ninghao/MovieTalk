@@ -1,9 +1,14 @@
-/**
- * React Native Course by ninghao.net
- */
-'use strict';
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ListView,
+  TabBarIOS
+} from 'react-native';
 
-import React from 'react-native';
 import styles from './app/Styles/Main';
 import MovieList from './app/Components/MovieList';
 import USBox from './app/Components/USBox';
@@ -12,19 +17,9 @@ import Featured from './app/Components/Featured';
 import Search from './app/Components/Search';
 import User from './app/Components/User';
 
-let {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ListView,
-  TabBarIOS,
-} = React;
-
 const REQUEST_URL = 'https://api.douban.com/v2/movie/top250';
 
-class MovieTalk extends React.Component {
+class MovieTalk extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -89,30 +84,3 @@ class MovieTalk extends React.Component {
 }
 
 AppRegistry.registerComponent('MovieTalk', () => MovieTalk);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// earth

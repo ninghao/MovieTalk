@@ -3,17 +3,17 @@
  */
 'use strict';
 
-import React from 'react-native';
+import React, { Component } from 'react';
+import {
+  Text,
+  View,
+  NavigatorIOS
+} from 'react-native';
+
 import styles from '../Styles/Main';
 import USBoxList from './USBoxList';
 
-let {
-  Text,
-  View,
-  NavigatorIOS,
-} = React;
-
-class USBox extends React.Component {
+class USBox extends Component {
   render() {
     return (
       <NavigatorIOS

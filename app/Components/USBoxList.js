@@ -3,22 +3,22 @@
  */
 'use strict';
 
-import React from 'react-native';
-import styles from '../Styles/Main';
-import MovieDetail from './MovieDetail';
-
-let {
+import React, { Component } from 'react';
+import {
   Text,
   View,
   Image,
   ListView,
   ActivityIndicatorIOS,
-  TouchableHighlight,
-} = React;
+  TouchableHighlight
+} from 'react-native';
+
+import styles from '../Styles/Main';
+import MovieDetail from './MovieDetail';
 
 const REQUEST_URL = 'https://api.douban.com/v2/movie/us_box';
 
-class USBox extends React.Component {
+class USBox extends Component {
   constructor(props) {
     super(props);
 

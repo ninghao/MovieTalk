@@ -1,9 +1,7 @@
 'use strict';
 
-import React from 'react-native';
-import styles from '../Styles/Main';
-
-let {
+import React, { Component } from 'react';
+import {
   Text,
   View,
   Image,
@@ -13,9 +11,11 @@ let {
   NavigatorIOS,
   WebView,
   AsyncStorage,
-} = React;
+} from 'react-native';
 
-class Login extends React.Component {
+import styles from '../Styles/Main';
+
+class Login extends Component {
   constructor(props) {
     super(props);
 

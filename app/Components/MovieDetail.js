@@ -3,19 +3,18 @@
  */
 'use strict';
 
-import React from 'react-native';
-import styles from '../Styles/Main';
-
-let {
+import React, { Component } from 'react';
+import {
   Text,
   View,
   Image,
   ListView,
   ActivityIndicatorIOS,
   TouchableHighlight,
-} = React;
+} from 'react-native';
+import styles from '../Styles/Main';
 
-class MovieDetail extends React.Component {
+class MovieDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {

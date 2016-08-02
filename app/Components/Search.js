@@ -1,20 +1,20 @@
 'use strict';
 
-import React from 'react-native';
-import styles from '../Styles/Main';
-import SearchForm from './SearchForm';
-
-let {
+import React, { Component } from 'react';
+import {
   Text,
   View,
   Image,
   ListView,
   ActivityIndicatorIOS,
   TouchableHighlight,
-  NavigatorIOS,
-} = React;
+  NavigatorIOS
+} from 'react-native';
 
-class Search extends React.Component {
+import styles from '../Styles/Main';
+import SearchForm from './SearchForm';
+
+class Search extends Component {
   constructor(props) {
     super(props);
   }
