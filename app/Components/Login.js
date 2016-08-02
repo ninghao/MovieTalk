@@ -80,7 +80,7 @@ class Login extends Component {
     return (
       <WebView
         startInLoadingState={true}
-        url={this.authUrl}
+        source={{uri: this.authUrl}}
         onNavigationStateChange={this.onNavigationStateChange.bind(this)}
       />
     );
