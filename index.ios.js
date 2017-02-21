@@ -23,7 +23,7 @@ class MovieTalk extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'user'
+      selectedTab: 'featured'
     };
   }
 

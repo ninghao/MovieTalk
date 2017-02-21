@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-class MovieTalk extends Component {
+export default class MovieTalk extends Component {
   render() {
     return (
       <View style={styles.container}>

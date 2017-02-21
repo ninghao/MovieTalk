@@ -16,7 +16,7 @@ import {
 import styles from '../Styles/Main';
 import MovieDetail from './MovieDetail';
 
-const REQUEST_URL = 'https://api.douban.com/v2/movie/us_box';
+const REQUEST_URL = 'https://api.douban.com/v2/movie/in_theaters';
 
 class USBox extends Component {
   constructor(props) {
@@ -62,17 +62,17 @@ class USBox extends Component {
         <View style={styles.item}>
           <View style={styles.itemImage}>
             <Image
-              source={{uri: movie.subject.images.large}}
+              source={{uri: movie.images.large}}
               style={styles.image}
              />
           </View>
           <View style={styles.itemContent}>
-            <Text style={styles.itemHeader}>{movie.subject.title}</Text>
+            <Text style={styles.itemHeader}>{movie.title}</Text>
             <Text style={styles.itemMeta}>
-              {movie.subject.original_title} ( {movie.subject.year} )
+              {movie.original_title} ( {movie.year} )
             </Text>
             <Text style={styles.redText}>
-              {movie.subject.rating.average}
+              {movie.rating.average}
             </Text>
           </View>
         </View>
