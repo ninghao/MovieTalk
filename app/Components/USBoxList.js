@@ -94,7 +94,7 @@ class USBox extends Component {
       );
     }
     return (
-      <View style={styles.container, styles.headerSpace}>
+      <View style={[styles.container, styles.headerSpace]}>
         <ListView
           dataSource={this.state.movies}
           renderRow={this.renderMovieList.bind(this)}

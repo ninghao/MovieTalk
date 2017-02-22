@@ -90,7 +90,7 @@ let styles = StyleSheet.create({
     flex: 1,
   },
   headerSpace: {
-    marginTop: 72,
+    marginTop: 60,
   },
 });
 
