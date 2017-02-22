@@ -117,7 +117,7 @@ class SearchForm extends Component {
       loaded: false,
       opacity: 1,
     });
-    const REQUEST_URL = `http://api.douban.com/v2/movie/search?q=${this.state.query}`
+    const REQUEST_URL = `https://api.douban.com/v2/movie/search?q=${this.state.query}`
     fetch(REQUEST_URL)
       .then(response => response.json())
       .then(responseData => {
