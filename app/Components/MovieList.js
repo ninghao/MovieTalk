@@ -167,7 +167,7 @@ class MovieList extends Component {
       );
     }
     return (
-      <View style={styles.container}>
+      <View style={styles.container, styles.headerSpace}>
         <ListView
           renderFooter={this.renderFooter.bind(this)}
           pageSize={this.state.count}

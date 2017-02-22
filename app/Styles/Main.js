@@ -88,7 +88,10 @@ let styles = StyleSheet.create({
     backgroundColor: '#eae7ff',
     paddingTop: 0,
     flex: 1,
-  }
+  },
+  headerSpace: {
+    marginTop: 72,
+  },
 });
 
 export { styles as default };
