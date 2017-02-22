@@ -57,7 +57,7 @@ class USBox extends Component {
     return (
       <TouchableHighlight
         underlayColor="rgba(34, 26, 38, 0.1)"
-        onPress={() => this.showMovieDetail(movie.subject)}
+        onPress={() => this.showMovieDetail(movie)}
       >
         <View style={styles.item}>
           <View style={styles.itemImage}>

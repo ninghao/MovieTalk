@@ -19,7 +19,7 @@ class USBox extends Component {
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
-          title: '北美票房',
+          title: '正在上映',
           component: USBoxList
         }}
         shadowHidden={true}

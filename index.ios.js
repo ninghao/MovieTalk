@@ -46,7 +46,7 @@ class MovieTalk extends Component {
         <TabBarIOS.Item
           // systemIcon="most-viewed"
           icon={{uri: icons.board, scale: 4.6}}
-          title="北美票房"
+          title="正在上映"
           selectedIcon={{uri: icons.boardActive, scale: 4.6}}
           selected={this.state.selectedTab === 'us_box'}
           onPress={() => {
