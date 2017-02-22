@@ -230,6 +230,7 @@ class SearchForm extends Component {
              this.state.searchHistory
            )}
            renderRow={this.renderSearchHistoryList.bind(this)}
+           enableEmptySections={true}
          />
       </View>
     );
