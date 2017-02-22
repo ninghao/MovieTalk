@@ -86,6 +86,7 @@ let styles = StyleSheet.create({
   },
   container: {
     backgroundColor: '#eae7ff',
+    paddingTop: 0,
     flex: 1,
   }
 });
